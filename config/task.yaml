@@ -1,0 +1,182 @@
+market_research:
+  description: >
+    Conduct market research to identify trends, opportunities, and challenges in the industry. 
+    Focus on understanding competitors, audience behavior, and product positioning.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    <Budget>{budget}</Budget>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON exactly matching MarketResearchOutput:
+    {
+      "market_trends": ["trend1", "trend2", "trend3"],
+      "competitor_analysis": {"competitor_name": "analysis"},
+      "customer_insights": {"insight": "details"},
+      "recommendations": ["recommendation1", "recommendation2"],
+      "file_path": "resources/research/market_research_report.md"
+    }
+  guidelines: >
+    Save the market research report in 'resources/research/market_research_report.md'. 
+    Return JSON with all fields as shown above.
+
+marketing_strategy:
+  description: >
+    Develop a marketing strategy aligned with the company's goals using insights from market research.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON exactly matching MarketingStrategyOutput:
+    {
+      "target_audience_segments": ["segment1", "segment2"],
+      "marketing_channels": ["LinkedIn", "Email", "Instagram"],
+      "weekly_plan": {
+        "Monday": ["Post Blog", "Instagram Reel"],
+        "Tuesday": ["Email Campaign"],
+        "Wednesday": ["Social Media Post"]
+      },
+      "budget_allocation": 50000.0,
+      "kpis": {"Engagement": "10%", "Leads": "50"},
+      "file_path": "resources/research/marketing_strategy.json"
+    }
+  guidelines: >
+    Save the strategy in the given file path. Return JSON as above.
+
+
+content_calendar:
+  description: >
+    Create a weekly content calendar aligned with the marketing strategy.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON matching ContentCalendarOutput:
+    {
+      "topics_formats": {"Blog": "AI Automation", "Reel": "Quick Tips"},
+      "publishing_schedule": {"Monday": "Blog", "Tuesday": "Reel"},
+      "key_campaigns": ["Launch Campaign", "Tutorial Series"],
+      "calendar_file_path": "resources/drafts/content_calendar.md"
+    }
+  guidelines: >
+    Save calendar in 'resources/drafts/content_calendar.md'. Return JSON as above.
+
+
+post_draft:
+  description: >
+    Prepare drafts for social media posts and email campaigns based on content calendar.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON matching PostDraftsOutput:
+    {
+      "social_media_posts": {
+        "LinkedIn": "Draft content...",
+        "Instagram": "Draft content..."
+      },
+      "email_campaigns": {
+        "Welcome Email": "Draft content...",
+        "Promo Email": "Draft content..."
+      },
+      "drafts_file_path": "resources/drafts/posts/draft_posts.json"
+    }
+  guidelines: >
+    Save drafts in 'resources/drafts/posts/draft_posts.json'. Return JSON.
+
+
+script_reels_shorts:
+  description: >
+    Write scripts for short-form video content (Reels, Shorts, TikTok).
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON matching ScriptReelsShortsOutput:
+    {
+      "scripts": {
+        "Instagram Reel": "Script content...",
+        "YouTube Short": "Script content..."
+      },
+      "file_path": "resources/drafts/reels/scripts.json"
+    }
+  guidelines: >
+    Save scripts in 'resources/drafts/reels/scripts.json'. Return JSON.
+
+
+content_research_blog:
+  description: >
+    Research topics, trends, and data for blog content ideas.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON matching ContentResearchBlogOutput:
+    {
+      "topics": ["Topic1", "Topic2"],
+      "supporting_data": {"Topic1": "Data details", "Topic2": "Data details"},
+      "keywords": ["AI", "Automation", "Excel"],
+      "research_file_path": "resources/research/blog_research.md"
+    }
+  guidelines: >
+    Save research in 'resources/research/blog_research.md'. Return JSON.
+
+
+
+draft_blogs:
+  description: >
+    Write full blog drafts based on research report.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON matching DraftBlogsOutput:
+    {
+      "blog_titles": ["Title1", "Title2"],
+      "blog_content": {"Title1": "Full blog content...", "Title2": "Full blog content..."},
+      "draft_file_path": "resources/drafts/blogs/draft_blogs.json"
+    }
+  guidelines: >
+    Save blog drafts in 'resources/drafts/blogs/draft_blogs.json'. Return JSON.
+
+
+
+seo_optimization:
+  description: >
+    Optimize content for SEO including keywords, meta tags, and internal linking.
+
+    <Product Name>{product_name}</Product Name>
+    <Product Description>{product_description}</Product Description>
+    <Target Audience>{target_audience}</Target Audience>
+    Current date: {current_date}
+
+  expected_output: >
+    Return JSON matching SEOOptimizationOutput:
+    {
+      "optimized_content": {"Blog1": "SEO optimized content..."},
+      "keywords_used": ["AI", "Automation", "Excel"],
+      "seo_score": {"readability": 90, "keyword_density": 85},
+      "file_path": "resources/seo_optimized/seo_content.json"
+    }
+  guidelines: >
+    Save optimized content in 'resources/seo_optimized/seo_content.json'. Return JSON.

@@ -1,0 +1,29 @@
+{
+  "target_audience_segments": [
+    "Small Accounting & Finance Firms: Seeking automation for reconciliation, reporting, and error reduction in Excel.",
+    "E-commerce & Retail SMEs: Needing efficient inventory management, sales data analysis, and order processing automation in Excel.",
+    "Startups & Small Businesses (General): Looking for easy-to-use AI tools to boost productivity in various operational Excel tasks without extensive technical expertise."
+  ],
+  "marketing_channels": [
+    "LinkedIn (Organic & Paid)",
+    "Company Blog / Website (SEO-focused Content Marketing)",
+    "Email Marketing",
+    "Targeted Google Search Ads",
+    "Industry-specific online communities/forums"
+  ],
+  "weekly_plan": {
+    "Monday": ["Publish Blog Post: '5 Ways AI Automates Financial Reporting in Excel'", "LinkedIn Post: Highlight key benefit from blog post, link to article"],
+    "Tuesday": ["Email Campaign: 'Free Trial Offer: Experience AI Excel Automation'", "Social Media Post: Share a quick tip on Excel automation using AI"],
+    "Wednesday": ["LinkedIn Article: 'Case Study: How a Small E-commerce Business Saved 10 Hrs/Week with AI Excel Tool'", "Google Ads: Monitor and optimize campaigns"],
+    "Thursday": ["Social Media Post: Poll - 'What's your biggest Excel headache?'", "Content Creation: Outline next week's blog post and social media content"],
+    "Friday": ["Engage in Industry Forums: Answer questions related to Excel automation, position tool as solution"]
+  },
+  "budget_allocation": 50000.0,
+  "kpis": {
+    "Engagement": "5% (Social Media Engagement Rate)",
+    "Leads": "50 (Free Trial Sign-ups)",
+    "Website Traffic": "20% MoM Growth (Unique Visitors)",
+    "Demo Requests": "15 per month"
+  },
+  "file_path": "resources/research/marketing_strategy.json"
+}
