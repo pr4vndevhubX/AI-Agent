@@ -1,6 +1,6 @@
 market_research:
   description: >
-    Conduct market research to identify trends, opportunities, and challenges in the industry. 
+    Conduct comprehensive market research to identify trends, opportunities, and challenges in the industry. 
     Focus on understanding competitors, audience behavior, and product positioning.
 
     <Product Name>{product_name}</Product Name>
@@ -9,174 +9,379 @@ market_research:
     <Budget>{budget}</Budget>
     Current date: {current_date}
 
+    IMPORTANT: After completing your research, you MUST return a valid JSON object with ALL required fields.
+    Do NOT just save a file and return the filename. You must return the actual structured data.
+
   expected_output: >
-    Return JSON exactly matching MarketResearchOutput:
-    {
-      "market_trends": ["trend1", "trend2", "trend3"],
-      "competitor_analysis": {"competitor_name": "analysis"},
-      "customer_insights": {"insight": "details"},
-      "recommendations": ["recommendation1", "recommendation2"],
+    YOU MUST return ONLY a valid JSON object with these EXACT fields (no additional fields, no missing fields):
+    
+    {{
+      "market_trends": [
+        "AI integration in business tools is accelerating",
+        "Small businesses seeking automation solutions",
+        "Growing demand for no-code/low-code tools"
+      ],
+      "competitor_analysis": {{
+        "Competitor1": "Analysis of their strengths and weaknesses",
+        "Competitor2": "Analysis of their market position"
+      }},
+      "customer_insights": {{
+        "pain_points": "Manual Excel tasks are time-consuming",
+        "preferences": "Easy-to-use interfaces with minimal learning curve",
+        "buying_behavior": "Prefer subscription models with trial periods"
+      }},
+      "recommendations": [
+        "Focus on ease of use in marketing messaging",
+        "Highlight time-saving benefits",
+        "Offer free trial to reduce barrier to entry"
+      ],
       "file_path": "resources/research/market_research_report.md"
-    }
+    }}
+
+    Save your detailed research report to the file_path location, but your final output MUST be the JSON structure above with real data, not just a file reference.
+
   guidelines: >
-    Save the market research report in 'resources/research/market_research_report.md'. 
-    Return JSON with all fields as shown above.
+    1. Conduct thorough research using available tools
+    2. Save a detailed markdown report to 'resources/research/market_research_report.md'
+    3. Extract key insights from your research
+    4. Return the JSON object with ALL five required fields populated with actual data
+    5. Ensure all fields match the exact structure shown in expected_output
+
 
 marketing_strategy:
   description: >
-    Develop a marketing strategy aligned with the company's goals using insights from market research.
+    Develop a comprehensive marketing strategy aligned with the company's goals using insights from market research.
+    Use the market research data to inform your strategy decisions.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
+    <Budget>{budget}</Budget>
     Current date: {current_date}
 
+    IMPORTANT: You MUST return a valid JSON object with ALL required fields filled with actual strategy data.
+
   expected_output: >
-    Return JSON exactly matching MarketingStrategyOutput:
-    {
-      "target_audience_segments": ["segment1", "segment2"],
-      "marketing_channels": ["LinkedIn", "Email", "Instagram"],
-      "weekly_plan": {
-        "Monday": ["Post Blog", "Instagram Reel"],
-        "Tuesday": ["Email Campaign"],
-        "Wednesday": ["Social Media Post"]
-      },
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "target_audience_segments": [
+        "Small business owners (1-50 employees)",
+        "Finance teams in SMEs",
+        "Operations managers seeking efficiency"
+      ],
+      "marketing_channels": [
+        "LinkedIn",
+        "Email Marketing",
+        "Instagram",
+        "Google Ads",
+        "Content Marketing"
+      ],
+      "weekly_plan": {{
+        "Monday": ["Post LinkedIn article", "Send newsletter"],
+        "Tuesday": ["Instagram Reel showcasing features"],
+        "Wednesday": ["Blog post on automation benefits"],
+        "Thursday": ["Email campaign to trial users"],
+        "Friday": ["LinkedIn engagement posts", "YouTube Short"]
+      }},
       "budget_allocation": 50000.0,
-      "kpis": {"Engagement": "10%", "Leads": "50"},
+      "kpis": {{
+        "Engagement Rate": "Increase by 15%",
+        "Lead Generation": "50 qualified leads per month",
+        "Conversion Rate": "10% trial to paid conversion",
+        "Social Media Growth": "20% follower increase"
+      }},
       "file_path": "resources/research/marketing_strategy.json"
-    }
+    }}
+
+    Save your detailed strategy document to the file_path, but return the JSON structure above with real strategic data.
+
   guidelines: >
-    Save the strategy in the given file path. Return JSON as above.
+    1. Analyze market research insights to inform your strategy
+    2. Create a realistic budget allocation based on the provided budget
+    3. Define clear, measurable KPIs
+    4. Save detailed strategy to 'resources/research/marketing_strategy.json'
+    5. Return the complete JSON object with all six required fields
 
 
 content_calendar:
   description: >
-    Create a weekly content calendar aligned with the marketing strategy.
+    Create a detailed weekly content calendar aligned with the marketing strategy and audience needs.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
     Current date: {current_date}
 
+    Review the marketing strategy to ensure calendar alignment. Return structured JSON output.
+
   expected_output: >
-    Return JSON matching ContentCalendarOutput:
-    {
-      "topics_formats": {"Blog": "AI Automation", "Reel": "Quick Tips"},
-      "publishing_schedule": {"Monday": "Blog", "Tuesday": "Reel"},
-      "key_campaigns": ["Launch Campaign", "Tutorial Series"],
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "topics_formats": {{
+        "Blog": "Excel automation best practices",
+        "Instagram Reel": "Quick tips for Excel efficiency",
+        "YouTube Short": "Feature demonstrations",
+        "LinkedIn Post": "Industry insights and case studies",
+        "Email": "User success stories"
+      }},
+      "publishing_schedule": {{
+        "Monday": "LinkedIn article + Newsletter",
+        "Tuesday": "Instagram Reel",
+        "Wednesday": "Blog post",
+        "Thursday": "Email campaign",
+        "Friday": "Social media engagement posts",
+        "Saturday": "YouTube Short",
+        "Sunday": "Content planning and review"
+      }},
+      "key_campaigns": [
+        "Product Launch Campaign - Week 1-2",
+        "Feature Highlight Series - Ongoing",
+        "Customer Success Stories - Monthly",
+        "Free Trial Promotion - Bi-weekly"
+      ],
       "calendar_file_path": "resources/drafts/content_calendar.md"
-    }
+    }}
+
+    Save a detailed calendar document to the file path, then return the JSON above with actual content plans.
+
   guidelines: >
-    Save calendar in 'resources/drafts/content_calendar.md'. Return JSON as above.
+    1. Align content topics with marketing strategy
+    2. Ensure variety in content formats
+    3. Balance promotional and educational content
+    4. Save detailed calendar to 'resources/drafts/content_calendar.md'
+    5. Return complete JSON with all four required fields
 
 
 post_draft:
   description: >
-    Prepare drafts for social media posts and email campaigns based on content calendar.
+    Prepare engaging drafts for social media posts and email campaigns based on the content calendar.
+    Create compelling, action-oriented content that resonates with the target audience.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
     Current date: {current_date}
 
+    Reference the content calendar for topics and timing. Return complete JSON output.
+
   expected_output: >
-    Return JSON matching PostDraftsOutput:
-    {
-      "social_media_posts": {
-        "LinkedIn": "Draft content...",
-        "Instagram": "Draft content..."
-      },
-      "email_campaigns": {
-        "Welcome Email": "Draft content...",
-        "Promo Email": "Draft content..."
-      },
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "social_media_posts": {{
+        "LinkedIn": "Tired of manual Excel tasks? Our AI-powered automation tool saves SMEs 10+ hours weekly. See how: [link] #Productivity #AI #ExcelAutomation",
+        "Instagram": "🚀 Transform your Excel workflow! Our AI tool handles repetitive tasks automatically. Try it free! Link in bio. #ExcelTips #Automation #SmallBusiness",
+        "Twitter": "Excel eating up your time? Let AI handle the repetitive stuff. Built for SMEs. Start your free trial today! [link]",
+        "Facebook": "Small business owners: Stop wasting time on Excel! Our AI automation tool does the heavy lifting for you. See the difference: [link]"
+      }},
+      "email_campaigns": {{
+        "Welcome Email": "Subject: Welcome to smarter Excel automation!\n\nHi [Name],\n\nThanks for trying our AI-powered Excel tool! Here's what you can do...",
+        "Feature Highlight": "Subject: 5 ways our tool saves you time\n\nDiscover how automation transforms your workflow...",
+        "Trial Reminder": "Subject: Only 3 days left in your trial!\n\nDon't miss out on effortless Excel automation...",
+        "Promotional Email": "Subject: Special offer: 20% off your first 3 months\n\nReady to eliminate manual Excel work?..."
+      }},
       "drafts_file_path": "resources/drafts/posts/draft_posts.json"
-    }
+    }}
+
+    Save all drafts to the file path, then return the JSON structure above with actual post content.
+
   guidelines: >
-    Save drafts in 'resources/drafts/posts/draft_posts.json'. Return JSON.
+    1. Write compelling, platform-appropriate copy
+    2. Include clear calls-to-action
+    3. Use relevant hashtags for social posts
+    4. Keep email subject lines under 50 characters
+    5. Save all drafts to 'resources/drafts/posts/draft_posts.json'
+    6. Return complete JSON with all three required fields
 
 
 script_reels_shorts:
   description: >
-    Write scripts for short-form video content (Reels, Shorts, TikTok).
+    Write engaging scripts for short-form video content (Instagram Reels, YouTube Shorts, TikTok).
+    Scripts should be concise, attention-grabbing, and showcase product benefits quickly.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
     Current date: {current_date}
 
+    Each script should be 30-60 seconds long with clear hooks and calls-to-action.
+
   expected_output: >
-    Return JSON matching ScriptReelsShortsOutput:
-    {
-      "scripts": {
-        "Instagram Reel": "Script content...",
-        "YouTube Short": "Script content..."
-      },
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "scripts": {{
+        "Instagram Reel 1": "[0-3s] HOOK: 'Spending hours on Excel reports?'\n[4-8s] Show problem: Manual data entry pain\n[9-15s] Introduce solution: Our AI tool\n[16-25s] Show transformation: Automated workflow\n[26-30s] CTA: 'Try free at [link]' + product logo",
+        "YouTube Short 1": "[0-3s] HOOK: 'This AI tool just saved me 10 hours'\n[4-10s] Demo: Upload Excel file\n[11-20s] Show: AI processing and automation\n[21-30s] Results: Completed report\n[31-35s] CTA: 'Link in description'",
+        "Instagram Reel 2": "[0-3s] HOOK: 'SMEs waste 15 hours weekly on Excel'\n[4-8s] Stats about time waste\n[9-15s] Our solution: AI automation\n[16-25s] Key features showcase\n[26-30s] CTA: 'Free trial - link in bio'",
+        "TikTok 1": "[0-2s] HOOK: 'Excel hack for small businesses'\n[3-8s] Show before: Manual process\n[9-15s] Show after: AI automation\n[16-25s] User testimonial\n[26-30s] CTA: 'Check link in bio'"
+      }},
       "file_path": "resources/drafts/reels/scripts.json"
-    }
+    }}
+
+    Save detailed scripts to the file path, then return the JSON above with actual video scripts.
+
   guidelines: >
-    Save scripts in 'resources/drafts/reels/scripts.json'. Return JSON.
+    1. Start with attention-grabbing hooks (first 3 seconds critical)
+    2. Show problem-solution-benefit structure
+    3. Include visual cues and text overlay suggestions
+    4. Keep language simple and energetic
+    5. End with clear CTAs
+    6. Save all scripts to 'resources/drafts/reels/scripts.json'
+    7. Return complete JSON with both required fields
 
 
 content_research_blog:
   description: >
-    Research topics, trends, and data for blog content ideas.
+    Research relevant topics, trends, and data for blog content that will resonate with the target audience.
+    Find data-backed insights, industry trends, and keyword opportunities.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
     Current date: {current_date}
 
-  expected_output: >
-    Return JSON matching ContentResearchBlogOutput:
-    {
-      "topics": ["Topic1", "Topic2"],
-      "supporting_data": {"Topic1": "Data details", "Topic2": "Data details"},
-      "keywords": ["AI", "Automation", "Excel"],
-      "research_file_path": "resources/research/blog_research.md"
-    }
-  guidelines: >
-    Save research in 'resources/research/blog_research.md'. Return JSON.
+    Use search tools to find current trends, statistics, and content gaps in the market.
 
+  expected_output: >
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "topics": [
+        "10 Excel Tasks Every SME Should Automate in 2025",
+        "How AI is Transforming Business Productivity",
+        "Excel Automation ROI: Time and Cost Savings Guide",
+        "From Manual to Automated: A Small Business Journey",
+        "Top Excel Mistakes Costing Your Business Time"
+      ],
+      "supporting_data": {{
+        "10 Excel Tasks Every SME Should Automate in 2025": "Research shows SMEs spend avg 15 hrs/week on Excel. Studies by [Source]. Automation can reduce this by 70%.",
+        "How AI is Transforming Business Productivity": "AI productivity tools market growing at 23% CAGR. [Stats from industry reports]",
+        "Excel Automation ROI: Time and Cost Savings Guide": "Case studies show avg ROI of 300% in first 6 months. Employee time savings of $5000+/year per user.",
+        "From Manual to Automated: A Small Business Journey": "Real examples from SMEs in finance, operations. Testimonials and success metrics.",
+        "Top Excel Mistakes Costing Your Business Time": "Common errors: manual data entry (40% time), formula mistakes, version control issues."
+      }},
+      "keywords": [
+        "Excel automation",
+        "AI Excel tools",
+        "business productivity",
+        "SME efficiency",
+        "automate Excel tasks",
+        "Excel for small business",
+        "time-saving tools",
+        "business automation software",
+        "Excel AI assistant",
+        "workflow automation"
+      ],
+      "research_file_path": "resources/research/blog_research.md"
+    }}
+
+    Save detailed research with sources to the file path, then return the JSON above with actual research data.
+
+  guidelines: >
+    1. Research current trends using search tools
+    2. Find statistics and data to support topics
+    3. Identify high-volume, low-competition keywords
+    4. Ensure topics address audience pain points
+    5. Save comprehensive research to 'resources/research/blog_research.md'
+    6. Return complete JSON with all four required fields
 
 
 draft_blogs:
   description: >
-    Write full blog drafts based on research report.
+    Write full, engaging blog drafts based on the research report.
+    Create SEO-friendly, informative articles that provide value to readers.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
     Current date: {current_date}
 
-  expected_output: >
-    Return JSON matching DraftBlogsOutput:
-    {
-      "blog_titles": ["Title1", "Title2"],
-      "blog_content": {"Title1": "Full blog content...", "Title2": "Full blog content..."},
-      "draft_file_path": "resources/drafts/blogs/draft_blogs.json"
-    }
-  guidelines: >
-    Save blog drafts in 'resources/drafts/blogs/draft_blogs.json'. Return JSON.
+    Reference the blog research for topics, data, and keywords. Write 800-1200 word articles.
 
+  expected_output: >
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "blog_titles": [
+        "10 Excel Tasks Every SME Should Automate in 2025",
+        "How AI is Transforming Business Productivity",
+        "Excel Automation ROI: Time and Cost Savings Guide"
+      ],
+      "blog_content": {{
+        "10 Excel Tasks Every SME Should Automate in 2025": "## Introduction\n\nSmall and medium enterprises spend an average of 15 hours weekly on Excel tasks...\n\n## 1. Data Entry Automation\n\nManual data entry is the biggest time sink...\n\n[Full article content 800-1200 words]",
+        "How AI is Transforming Business Productivity": "## The AI Revolution in Business\n\nArtificial intelligence is no longer a luxury...\n\n## Real-World Applications\n\n[Full article content 800-1200 words]",
+        "Excel Automation ROI: Time and Cost Savings Guide": "## Understanding the True Cost of Manual Excel Work\n\nEvery hour spent on repetitive Excel tasks...\n\n[Full article content 800-1200 words]"
+      }},
+      "draft_file_path": "resources/drafts/blogs/draft_blogs.json"
+    }}
+
+    Save all blog drafts to the file path, then return the JSON above with actual blog content.
+
+  guidelines: >
+    1. Write in clear, engaging language for SME audience
+    2. Include headers, subheaders for readability
+    3. Incorporate keywords naturally (2-3% density)
+    4. Add data and statistics from research
+    5. Include clear CTAs in conclusions
+    6. Write 800-1200 words per blog
+    7. Save all drafts to 'resources/drafts/blogs/draft_blogs.json'
+    8. Return complete JSON with all three required fields
 
 
 seo_optimization:
   description: >
-    Optimize content for SEO including keywords, meta tags, and internal linking.
+    Optimize blog content for SEO including keywords, meta descriptions, internal linking suggestions,
+    and readability improvements. Analyze and score the optimizations.
 
     <Product Name>{product_name}</Product Name>
     <Product Description>{product_description}</Product Description>
     <Target Audience>{target_audience}</Target Audience>
     Current date: {current_date}
 
+    Review drafted blogs and enhance them for search engine performance.
+
   expected_output: >
-    Return JSON matching SEOOptimizationOutput:
-    {
-      "optimized_content": {"Blog1": "SEO optimized content..."},
-      "keywords_used": ["AI", "Automation", "Excel"],
-      "seo_score": {"readability": 90, "keyword_density": 85},
+    YOU MUST return ONLY a valid JSON object with these EXACT fields:
+    
+    {{
+      "optimized_content": {{
+        "10 Excel Tasks Every SME Should Automate in 2025": "**Meta Title:** 10 Excel Tasks to Automate for SMEs | Save 15 Hours Weekly\n**Meta Description:** Discover which Excel tasks SMEs should automate in 2025. Our AI-powered tool saves 15+ hours weekly. Free trial available.\n**Optimized Content:** [Full optimized article with keyword placement, headers, internal links]\n**Internal Links:** Link to 'Excel Automation ROI' article, 'Product Features' page\n**Image Alt Text:** 'Excel automation dashboard for small businesses'",
+        "How AI is Transforming Business Productivity": "**Meta Title:** AI Business Productivity Tools | Transform Your Workflow 2025\n**Meta Description:** Learn how AI is revolutionizing business productivity for SMEs. Automation case studies and ROI data included.\n**Optimized Content:** [Full optimized article]\n**Internal Links:** Link to automation guide, customer success stories",
+        "Excel Automation ROI: Time and Cost Savings Guide": "**Meta Title:** Excel Automation ROI Calculator | Time & Cost Savings for SMEs\n**Meta Description:** Calculate your Excel automation ROI. Real case studies show 300% ROI and $5000+ annual savings per user.\n**Optimized Content:** [Full optimized article]\n**Internal Links:** Link to pricing page, free trial"
+      }},
+      "keywords_used": [
+        "Excel automation",
+        "AI Excel tools",
+        "business productivity",
+        "SME efficiency",
+        "automate Excel tasks",
+        "workflow automation",
+        "time-saving tools",
+        "business automation software"
+      ],
+      "seo_score": {{
+        "readability": 85,
+        "keyword_density": 88,
+        "meta_optimization": 92,
+        "internal_linking": 80,
+        "overall_score": 86
+      }},
       "file_path": "resources/seo_optimized/seo_content.json"
-    }
+    }}
+
+    Save all optimized content to the file path, then return the JSON above with optimization details.
+
   guidelines: >
-    Save optimized content in 'resources/seo_optimized/seo_content.json'. Return JSON.
+    1. Add compelling meta titles (50-60 characters)
+    2. Write meta descriptions (150-160 characters)
+    3. Optimize keyword placement (headings, first paragraph, conclusion)
+    4. Maintain 2-3% keyword density
+    5. Suggest relevant internal links
+    6. Improve readability (short paragraphs, subheadings)
+    7. Add image alt text suggestions
+    8. Score each optimization aspect (0-100)
+    9. Save to 'resources/seo_optimized/seo_content.json'
+    10. Return complete JSON with all four required fields

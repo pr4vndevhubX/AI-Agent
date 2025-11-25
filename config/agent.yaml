@@ -1,5 +1,4 @@
 head_of_marketing:
-  llm: gemini/gemini-2.0-flash
   role: >
     Head of Marketing
   goal: >
@@ -11,7 +10,6 @@ head_of_marketing:
   verbose: true
 
 content_creator_social_media:
-  llm: gemini/gemini-2.0-flash
   role: >
     Social Media Content Creator
   goal: >
@@ -23,7 +21,6 @@ content_creator_social_media:
   verbose: true
 
 content_writer_blogs:
-  llm: gemini/gemini-2.0-flash
   role: >
     Blog Content Writer
   goal: >
@@ -35,7 +32,6 @@ content_writer_blogs:
   verbose: true
 
 seo_specialist:
-  llm: gemini/gemini-2.0-flash
   role: >
     SEO Specialist
   goal: >
