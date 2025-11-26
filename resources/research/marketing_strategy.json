@@ -1,137 +1,30 @@
 {
-  "strategy_name": "AI Powered Excel Automation Tool Marketing Strategy (SME Focus)",
-  "date": "2025-11-25",
-  "product_name": "AI Powered Excel Automation Tool",
-  "product_description": "A tool that automates repetitive tasks in Excel using AI",
-  "overall_goal": "Boost brand awareness, engagement, and conversion rates among Small and Medium Enterprises (SMEs) by highlighting productivity gains and ease of use.",
-  "market_research_summary": {
-    "trends": [
-      "Increased AI adoption for automation and efficiency across businesses.",
-      "High demand for user-friendly AI tools, especially for SMEs lacking IT staff.",
-      "Focus on productivity and measurable gains (e.g., time-saving, error reduction).",
-      "Excel's enduring role in SMEs makes AI integration highly relevant."
-    ],
-    "competitor_landscape": [
-      "Key competitors include Microsoft Copilot, Ajelix, Excelformulabot, SheetAI, Numerous.ai, Coefficient.",
-      "Competitors vary in scope, platform support, and pricing, often emphasizing ease of use and specific Excel pain points.",
-      "Opportunity to differentiate by emphasizing 'No-Code' and 'Intuitive Automation' for non-technical SME users."
-    ],
-    "customer_insights": {
-      "pain_points": [
-        "Excessive manual tasks (data entry, reporting).",
-        "High error rates in spreadsheets.",
-        "Version control issues and scalability limitations.",
-        "Fragmented integration with other business systems.",
-        "Inefficient and time-consuming reporting.",
-        "Concerns about data security and limited collaboration features."
-      ],
-      "decision_making": [
-        "Prioritize solutions that align with business goals and solve specific operational inefficiencies.",
-        "Strong emphasis on efficiency, productivity, and clear ROI.",
-        "Ease of use is paramount due to limited technical resources.",
-        "Desire for data-driven insights and streamlined processes."
-      ]
-    }
-  },
   "target_audience_segments": [
-    {
-      "segment_name": "Small Business Owners (1-50 employees)",
-      "description": "Hands-on with all operations, including finance and reporting. Seek tools that save time, reduce errors, and are easy to implement without IT support.",
-      "key_pain_points": ["Manual data entry", "Time-consuming report generation", "Data accuracy concerns"],
-      "messaging_focus": "Time-saving, simplicity, direct ROI for their business."
-    },
-    {
-      "segment_name": "Finance Teams/Managers in SMEs",
-      "description": "Heavily reliant on Excel for budgeting, forecasting, reconciliations, and financial reporting. Need to reduce manual data manipulation and improve accuracy.",
-      "key_pain_points": ["Manual reconciliations", "Error-prone financial models", "Lengthy reporting cycles"],
-      "messaging_focus": "Accuracy, compliance, streamlined financial operations, rapid reporting."
-    },
-    {
-      "segment_name": "Operations Managers/Analysts seeking efficiency",
-      "description": "Responsible for optimizing operational workflows, inventory, sales data, project tracking. Need automation to improve efficiency and gain quicker insights.",
-      "key_pain_points": ["Inefficient inventory tracking", "Manual sales data processing", "Slow operational reporting"],
-      "messaging_focus": "Operational efficiency, streamlined workflows, quick data insights, scalability."
-    }
+    "Small business owners (1-50 employees)",
+    "Finance teams in SMEs",
+    "Operations managers seeking efficiency"
   ],
   "marketing_channels": [
-    {
-      "channel": "LinkedIn",
-      "rationale": "Excellent for B2B targeting of business owners, finance, and operations professionals in SMEs. Ideal for thought leadership and product demonstrations.",
-      "activities": ["Targeted ads", "Organic posts (articles, case studies, polls)", "Thought leadership content"]
-    },
-    {
-      "channel": "Google Ads (Search & Display)",
-      "rationale": "Captures high-intent demand from SMEs actively searching for Excel automation solutions. Display ads for brand awareness.",
-      "activities": ["Keyword-targeted search campaigns", "Display network campaigns for retargeting and awareness"]
-    },
-    {
-      "channel": "Content Marketing (Blog, Guides, Video Tutorials)",
-      "rationale": "Establishes thought leadership, addresses pain points, provides educational content, improves SEO, and nurtures leads.",
-      "activities": ["Blog posts on use cases, benefits, 'how-to' guides", "Video tutorials and demos (YouTube)", "Infographics"]
-    },
-    {
-      "channel": "Email Marketing",
-      "rationale": "Essential for lead nurturing, onboarding trial users, sharing product updates, and building direct relationships.",
-      "activities": ["Welcome series for new sign-ups", "Trial user engagement emails", "Newsletter with tips and updates", "Promotional campaigns"]
-    },
-    {
-      "channel": "YouTube (Tutorials, Demos, Shorts)",
-      "rationale": "Visual demonstrations of ease of use and impact are highly effective for an automation tool. Shorts for quick awareness.",
-      "activities": ["Feature tutorials", "Use case demonstrations", "Customer testimonials", "Short-form content for quick tips"]
-    }
+    "LinkedIn",
+    "Email Marketing",
+    "Content Marketing",
+    "Google Ads",
+    "YouTube"
   ],
   "weekly_plan": {
-    "Monday": [
-      "LinkedIn: Post article/case study (e.g., 'How an SME Saved X Hours with AI Automation for Financial Reporting').",
-      "Email Marketing: Send weekly newsletter with an Excel automation tip, linking to a blog post."
-    ],
-    "Tuesday": [
-      "YouTube: Publish a short video tutorial/demo (Short) showcasing a specific automation feature (e.g., 'Automate Invoice Processing in 3 Clicks').",
-      "Google Ads: Review campaign performance and optimize bids/keywords."
-    ],
-    "Wednesday": [
-      "Blog/Content Marketing: Publish new blog post ('Top 5 Repetitive Excel Tasks AI Can Eliminate for Your Business').",
-      "LinkedIn: Share the new blog post with a compelling question to drive engagement."
-    ],
-    "Thursday": [
-      "Email Marketing: Send targeted email campaign to trial users with tips for maximizing their trial or highlighting a key feature.",
-      "Google Ads: Launch new display ad creative targeting relevant SME websites."
-    ],
-    "Friday": [
-      "LinkedIn: Post an engaging poll or question related to common Excel frustrations to drive interaction and gather insights.",
-      "YouTube: Share a behind-the-scenes or 'meet the team' short video to build brand personality."
-    ]
+    "Monday": ["Post LinkedIn article", "Send newsletter"],
+    "Tuesday": ["YouTube Short/Instagram Reel showcasing features"],
+    "Wednesday": ["Blog post on automation benefits"],
+    "Thursday": ["Email campaign to trial users"],
+    "Friday": ["LinkedIn engagement posts", "YouTube tutorial/demo"]
   },
-  "budget_allocation": {
-    "total_budget": 50000.0,
-    "breakdown": {
-      "Google Ads": 20000.0,
-      "LinkedIn Ads": 15000.0,
-      "Content Creation (Blog/Video Freelancers)": 10000.0,
-      "Email Marketing Tools/Software": 5000.0
-    },
-    "rationale": "Prioritizes cost-effective digital channels with strong targeting capabilities for B2B SMEs. Google Ads captures intent, LinkedIn provides professional reach, content builds authority and SEO, and email nurtures leads."
-  },
+  "budget_allocation": 50000.0,
   "kpis": {
-    "Brand Awareness": {
-      "Website Traffic (Unique Visitors)": "Increase by 25% month-over-month.",
-      "Social Media Reach (LinkedIn)": "Grow by 20% month-over-month."
-    },
-    "Engagement": {
-      "Social Media Engagement Rate (LinkedIn)": "Maintain an average of 5%.",
-      "Blog Post Comments/Shares": "Achieve an average of 5 comments and 10 shares per new post.",
-      "Email Open Rate": "Maintain an average of 25%."
-    },
-    "Conversion Rates": {
-      "Lead Generation (Qualified Leads/Trial Sign-ups)": "Generate 50 qualified leads per month.",
-      "Trial-to-Paid Conversion Rate": "Achieve 10%.",
-      "Click-Through Rate (CTR) for Google Search Ads": "Achieve an average of 3%."
-    }
+    "Engagement Rate": "Increase by 15%",
+    "Lead Generation": "50 qualified leads per month",
+    "Conversion Rate": "10% trial to paid conversion",
+    "Social Media Growth": "20% follower increase",
+    "Website Traffic": "Increase by 25%"
   },
-  "assumptions_and_risks": [
-    "Assumes market research is accurate and representative of SME needs.",
-    "Limited budget necessitates focus on highly targeted digital channels.",
-    "Competition from established players (e.g., Microsoft Copilot) requires strong differentiation on ease of use and specific pain points.",
-    "Success depends on continuous monitoring and optimization of campaigns."
-  ]
+  "file_path": "resources/research/marketing_strategy.json"
 }

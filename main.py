@@ -5,26 +5,55 @@ from crewai_tools import SerperDevTool, ScrapeWebsiteTool, DirectoryReadTool, Fi
 from pydantic import BaseModel, Field
 import os
 from pathlib import Path
+from datetime import datetime
 
 from dotenv import load_dotenv
 load_dotenv()
 
 
-# Configure LLM with error handling
+# Configure LLM with OpenRouter (Free models)
 llm = LLM(
-    model="gemini/gemini-2.0-flash-lite",  # More stable than 2.5-flash
+    model="openrouter/x-ai/grok-4.1-fast",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
     temperature=0.7,
-    timeout=120,  # Increase timeout to 2 minutes
+    timeout=180
 )
 
-# Fallback LLM in case Gemini fails
-try:
-    fallback_llm = LLM(
-        model="groq/llama-3.1-70b",  # Uncomment if you have OpenAI API key
-        temperature=0.7,
-    )
-except:
-    fallback_llm = llm
+fallback_llm = LLM(
+    model="openrouter/meta-llama/llama-3.1-8b-instruct:free",
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    temperature=0.7,
+    timeout=180
+)
+
+
+# -------------------------------
+# Helper Functions
+# -------------------------------
+
+def get_llm_with_fallback():
+    """Returns LLM with automatic fallback"""
+    try:
+        return llm
+    except:
+        print("⚠️ Primary LLM failed, using fallback...")
+        return fallback_llm
+
+
+def setup_directories():
+    """Create necessary directories if they don't exist"""
+    directories = [
+        'resources/research',
+        'resources/drafts/posts',
+        'resources/drafts/reels',
+        'resources/drafts/blogs',
+        'resources/seo_optimized'
+    ]
+    
+    for directory in directories:
+        Path(directory).mkdir(parents=True, exist_ok=True)
+    
+    print("✅ All required directories have been created/verified.")
 
 
 # -------------------------------
@@ -87,26 +116,6 @@ class SEOOptimizationOutput(BaseModel):
 
 
 # -------------------------------
-# Helper Functions
-# -------------------------------
-
-def setup_directories():
-    """Create necessary directories if they don't exist"""
-    directories = [
-        'resources/research',
-        'resources/drafts/posts',
-        'resources/drafts/reels',
-        'resources/drafts/blogs',
-        'resources/seo_optimized'
-    ]
-    
-    for directory in directories:
-        Path(directory).mkdir(parents=True, exist_ok=True)
-    
-    print("✅ All required directories have been created/verified.")
-
-
-# -------------------------------
 # Marketing Crew Definition
 # -------------------------------
 
@@ -123,18 +132,18 @@ class TheMarketingCrew():
             config=self.agents_config['head_of_marketing'],
             tools=[
                 SerperDevTool(),
-                ScrapeWebsiteTool(timeout=30),  # Increased timeout
+                ScrapeWebsiteTool(timeout=30),
                 DirectoryReadTool('resources/drafts'),
                 FileWriterTool(),
                 FileReadTool(),
             ],
-            llm=llm,
-            reasoning=True,
+            llm=get_llm_with_fallback(),
+            reasoning=False,
             inject_data=True,
             verbose=True,
-            allow_delegation=True,
-            max_iter=10,  # Reduced from default
-            max_rpm=2,    # Reduced to avoid rate limits
+            allow_delegation=False,  # Simplified
+            max_iter=20,  # Increased for completion
+            max_rpm=20,
             respect_context_window=True
         )
     
@@ -149,13 +158,13 @@ class TheMarketingCrew():
                 FileWriterTool(),
                 FileReadTool()
             ],
-            llm=llm,
-            reasoning=True,
+            llm=get_llm_with_fallback(),
+            reasoning=False,
             inject_data=True,
             verbose=True,
-            allow_delegation=True,
-            max_iter=8,   # Reduced from 30 to prevent recursion
-            max_rpm=3,    # Reduced from 5
+            allow_delegation=False,  # Simplified
+            max_iter=15,  # Increased
+            max_rpm=20,
             respect_context_window=True
         )
     
@@ -170,13 +179,13 @@ class TheMarketingCrew():
                 FileWriterTool(),
                 FileReadTool()
             ],
-            llm=llm,
-            reasoning=True,
+            llm=get_llm_with_fallback(),
+            reasoning=False,
             inject_data=True,
             verbose=True,
-            allow_delegation=True,
-            max_iter=5,
-            max_rpm=3,    # Reduced from 4
+            allow_delegation=False,  # Simplified
+            max_iter=15,  # Increased
+            max_rpm=20,
             respect_context_window=True
         )
 
@@ -190,13 +199,13 @@ class TheMarketingCrew():
                 FileWriterTool(),
                 FileReadTool(),
             ],
-            llm=llm,
-            reasoning=True,
+            llm=get_llm_with_fallback(),
+            reasoning=False,
             inject_data=True,
             verbose=True,
-            allow_delegation=True,
-            max_iter=5,   # Increased from 3 for better completion
-            max_rpm=2,    # Reduced from 3
+            allow_delegation=False,  # Simplified
+            max_iter=15,  # Increased
+            max_rpm=20,
             respect_context_window=True
         )
     
@@ -209,8 +218,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['market_research'],
             agent=self.head_of_marketing(),
-            output_json=MarketResearchOutput,
-            context=[],  # No dependencies
+            # output_json=MarketResearchOutput,  # Removed for stability
+            context=[],
         )
 
     @task
@@ -218,8 +227,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['marketing_strategy'],
             agent=self.head_of_marketing(),
-            output_json=MarketingStrategyOutput,
-            context=[self.market_research()],  # Depends on market research
+            # output_json=MarketingStrategyOutput,  # Removed for stability
+            context=[self.market_research()],
         )
 
     @task
@@ -227,8 +236,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['content_calendar'],
             agent=self.content_creator_social_media(),
-            output_json=ContentCalendarOutput,
-            context=[self.marketing_strategy()],  # Depends on strategy
+            # output_json=ContentCalendarOutput,  # Removed for stability
+            context=[self.marketing_strategy()],
         )
 
     @task
@@ -236,8 +245,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['post_draft'],
             agent=self.content_creator_social_media(),
-            output_json=PostDraftsOutput,
-            context=[self.content_calendar()],  # Depends on calendar
+            # output_json=PostDraftsOutput,  # Removed for stability
+            context=[self.content_calendar()],
         )
 
     @task
@@ -245,8 +254,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['script_reels_shorts'],
             agent=self.content_creator_social_media(),
-            output_json=ScriptReelsShortsOutput,
-            context=[self.content_calendar()],  # Depends on calendar
+            # output_json=ScriptReelsShortsOutput,  # Removed for stability
+            context=[self.content_calendar()],
         )
 
     @task
@@ -254,8 +263,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['content_research_blog'],
             agent=self.content_writer_blogs(),
-            output_json=ContentResearchBlogOutput,
-            context=[self.marketing_strategy()],  # Depends on strategy
+            # output_json=ContentResearchBlogOutput,  # Removed for stability
+            context=[self.marketing_strategy()],
         )
 
     @task
@@ -263,8 +272,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['draft_blogs'],
             agent=self.content_writer_blogs(),
-            output_json=DraftBlogsOutput,
-            context=[self.content_research_blog()],  # Depends on research
+            # output_json=DraftBlogsOutput,  # Removed for stability
+            context=[self.content_research_blog()],
         )
 
     @task
@@ -272,8 +281,8 @@ class TheMarketingCrew():
         return Task(
             config=self.tasks_config['seo_optimization'],
             agent=self.seo_specialist(),
-            output_json=SEOOptimizationOutput,
-            context=[self.draft_blogs()],  # Depends on blog drafts
+            # output_json=SEOOptimizationOutput,  # Removed for stability
+            context=[self.draft_blogs()],
         )
     
     @crew
@@ -281,14 +290,13 @@ class TheMarketingCrew():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            process=Process.sequential,  # Fixed: was Process.sequential
+            process=Process.sequential,
             verbose=True,
-            planning=True,
-            planning_llm=llm,
-            max_rpm=2,  # Reduced to avoid rate limits
-            memory=False,  # Disable memory to reduce complexity
-            cache=True,  # Enable caching for efficiency
-            full_output=True,  # Get detailed output
+            planning=False,
+            max_rpm=20,  # Increased
+            memory=False,
+            cache=True,
+            full_output=True,
         )
 
 
@@ -307,8 +315,6 @@ def main():
     setup_directories()
     
     # Define inputs
-    from datetime import datetime
-    
     inputs = {
         "product_name": "AI Powered Excel Automation Tool",
         "target_audience": "Small and Medium Enterprises (SMEs)",
@@ -356,32 +362,45 @@ def main():
         
         return result
         
-    except KeyboardInterrupt:
-        print("\n\n⚠️  Execution interrupted by user.")
-        return None
-        
     except Exception as e:
-        print("\n" + "=" * 80)
-        print("❌ ERROR OCCURRED")
-        print("=" * 80)
-        print(f"\nError Type: {type(e).__name__}")
-        print(f"Error Message: {str(e)}")
-        print("\n💡 Troubleshooting Tips:")
-        print("   1. Check if Gemini API key is valid in .env file")
-        print("   2. Verify Serper API key is set correctly")
-        print("   3. Ensure stable internet connection")
-        print("   4. Try reducing max_rpm values if rate limited")
-        print("   5. Wait a few minutes and retry if API is overloaded")
-        print("\n" + "=" * 80)
+        print(f"\n⚠️ Primary execution failed: {e}")
+        print("🔄 Attempting with fallback LLM...\n")
         
-        # Save error log
-        with open('error_log.txt', 'w') as f:
-            f.write(f"Error Type: {type(e).__name__}\n")
-            f.write(f"Error Message: {str(e)}\n")
-            f.write(f"Timestamp: {datetime.now()}\n")
-        
-        print("\n📝 Error details saved to 'error_log.txt'")
-        return None
+        try:
+            # Retry with fallback by reinitializing
+            global llm
+            llm = fallback_llm
+            
+            crew = TheMarketingCrew()
+            result = crew.marketingcrew().kickoff(inputs=inputs)
+            
+            print("\n" + "=" * 80)
+            print("✅ COMPLETED WITH FALLBACK LLM!")
+            print("=" * 80)
+            return result
+            
+        except Exception as fallback_error:
+            print("\n" + "=" * 80)
+            print("❌ ERROR OCCURRED EVEN WITH FALLBACK")
+            print("=" * 80)
+            print(f"\nError Type: {type(fallback_error).__name__}")
+            print(f"Error Message: {str(fallback_error)}")
+            print("\n💡 Troubleshooting Tips:")
+            print("   1. Check if Gemini API key is valid in .env file")
+            print("   2. Verify Serper API key is set correctly")
+            print("   3. Ensure stable internet connection")
+            print("   4. Try waiting a few minutes if rate limited")
+            print("   5. Check Gemini API status: https://status.cloud.google.com/")
+            print("\n" + "=" * 80)
+            
+            # Save error log
+            with open('error_log.txt', 'w') as f:
+                f.write(f"Error Type: {type(fallback_error).__name__}\n")
+                f.write(f"Error Message: {str(fallback_error)}\n")
+                f.write(f"Timestamp: {datetime.now()}\n")
+            
+            print("\n📝 Error details saved to 'error_log.txt'")
+            return None
 
 
 if __name__ == "__main__":
